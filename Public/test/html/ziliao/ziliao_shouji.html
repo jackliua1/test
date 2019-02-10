@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/xg.css"/>
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body style="background-color: #eef4f0;">
+		<div class="zl_div3">
+			<p class="zl_p3">
+				<img src="../../img/zl01.png"/>
+			</p>
+			
+			<p class="zl_p4">16956568989</p>
+		</div>
+		
+		<div class="zl_div4">
+			<p class="zl_p5">
+				<img src="../../img/zl02.png"/>
+			</p>
+			
+			<p class="zl_p6">
+				<input type="text" id="" value="" class="zl_input3" placeholder="请输入验证码"/>
+			</p>
+			
+			<p class="zl_p7">
+				<input type="button"  id="btn" onclick="sendemail()" value="发送验证码" class="zl_input4"/>
+			</p>
+		</div>
+		
+		<div class="xf_div10">
+			<input type="button" id="" value="验证手机号" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var tel = $(".zl_p4").text();
+		var reg = /^(\d{3})\d{4}(\d{4})$/;
+			tel = tel.replace(reg, "$1****$2");
+			
+		$(".zl_p4").text(tel);	
+	</script>
+		
+	<script type="text/javascript"> 
+		var countdown=60; 
+		function sendemail(){
+		    var obj = $("#btn");
+		    settime(obj);
+		    
+		    }
+		function settime(obj) { //发送验证码倒计时
+		    if (countdown == 0) { 
+		        obj.attr('disabled',false); 
+		        //obj.removeattr("disabled"); 
+		        obj.val("发送验证码");
+		        countdown = 60; 
+		        return;
+		    } else { 
+		        obj.attr('disabled',true);
+		        obj.val("重新发送(" + countdown + ")");
+		        countdown--; 
+		    } 
+		setTimeout(function() { 
+		    settime(obj) }
+		    ,1000) 
+		}
+	</script>
+</html>

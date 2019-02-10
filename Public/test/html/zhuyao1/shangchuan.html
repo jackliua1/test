@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/xg.css"/>
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="../../js/webuploader.min.js"></script>
+		<script src="../../js/diyUpload.js"></script>
+
+		<style type="text/css">
+			* {
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body style="background-color: #eef4f0;">
+		<div class="sc_div1">
+			<div class="sc_div2">
+				<ul class="upload-ul clearfix">
+					<li class="upload-pick">
+						<div class="webuploader-container clearfix" id="goodsUpload"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		
+		<ul class="jf_ul1">
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/zy_05.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>模板</span>
+				</p>				
+			</li>
+			
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/zy_06.png"/>
+				</p>
+				<p class="wt_p2 wt_cor1">
+					<span>上传</span>
+				</p>				
+			</li>
+			
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/zy_03.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>历史</span>
+				</p>				
+			</li>
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/zy_04.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>帮助</span>
+				</p>				
+			</li>			
+		</ul>
+	</body>
+	<script>
+		$(function() {
+
+			//上传图片
+			var $tgaUpload = $('#goodsUpload').diyUpload({
+				url: 'uploadFilePath',
+				success: function(data) {},
+				error: function(err) {},
+				buttonText: '',
+				accept: {
+					title: "Images",
+					extensions: 'gif,jpg,jpeg,bmp,png'
+				},
+				thumb: {
+					width: 80,
+					height: 80,
+					quality: 100,
+					allowMagnify: true,
+					crop: true,
+					type: "image/jpeg"
+				}
+			});
+		});
+	</script>
+</html>

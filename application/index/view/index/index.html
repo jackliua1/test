@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/static/index/css/jiajiakang.css"/>
+		<script src="/static/index/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="{:url('index/login')}" method="post" name="myform">
+		<div class="sy_div1">
+			<img src="/static/index/img/img01.png" class="sy_img1"/>
+			<input type="submit" id="" value="退出登录" class="ghd_input2" />
+			<img src="/static/index/img/img02.png" class="sy_img2"/>
+		</div>
+		</form>
+		{if condition="$data.stuer neq '1'"}
+		<div class="page-content">
+		<ul class="sy_ul1">
+			<li>
+				<P class="sy_p1">
+					<img onclick="javascript:window.location.href ='gouhuo'" src="/static/index/img/img03.png"/>
+				</P>
+				<p class="sy_p2" onclick="javascript:window.location.href ='gouhuo'">
+					报货
+				</p>
+			</li>
+			<li>
+			<P class="sy_p1">
+				<img onclick="javascript:window.location.href ='purchase'" src="/static/index/img/img03.png"/>
+			</P>
+			<p class="sy_p2" onclick="javascript:window.location.href ='gouhuo'">
+				仓库进货
+			</p>
+			</li>
+			<li>
+				<P class="sy_p1">
+					<img onclick="javascript:window.location.href ='purchases'" src="/static/index/img/img03.png"/>
+				</P>
+				<p class="sy_p2" onclick="javascript:window.location.href ='gouhuo'">
+					仓库列表
+				</p>
+			</li>
+			<!--<li>-->
+				<!--<P class="sy_p1">-->
+					<!--<img onclick="javascript:window.location.href = 'book'" src="/static/index/img/img03.png"/>-->
+				<!--</P>-->
+				<!--<p class="sy_p2" onclick="javascript:window.location.href = 'book'">-->
+					<!--购货单-->
+				<!--</p>-->
+			<!--</li>-->
+			<!--<li>-->
+				<!--<P class="sy_p1">-->
+					<!--<img onclick="javascript:window.location.href = 'stock'" src="/static/index/img/img03.png"/>-->
+				<!--</P>-->
+				<!--<p class="sy_p2" onclick="javascript:window.location.href = 'stock'">-->
+					<!--库存盘点-->
+				<!--</p>-->
+			<!--</li>-->
+			<!--<li>-->
+				<!--<P class="sy_p1">-->
+					<!--<img onclick="javascript:window.location.href = 'kucunliebiao'" src="/static/index/img/img03.png"/>-->
+				<!--</P>-->
+				<!--<p class="sy_p2" onclick="javascript:window.location.href = 'kucunliebiao'">-->
+					<!--库存列表-->
+				<!--</p>-->
+			<!--</li>-->
+		</ul>
+		</div>
+		{else /}
+		<div class="page-content">
+			<ul class="sy_ul1">
+				<li>
+					<P class="sy_p1">
+						<img onclick="javascript:window.location.href ='gouhuo'" src="/static/index/img/img03.png"/>
+					</P>
+					<p class="sy_p2" onclick="javascript:window.location.href ='gouhuo'">
+						报货
+					</p>
+				</li>
+				<li>
+					<P class="sy_p1">
+						<img onclick="javascript:window.location.href = 'book'" src="/static/index/img/img03.png"/>
+					</P>
+					<p class="sy_p2" onclick="javascript:window.location.href = 'book'">
+						报货单
+					</p>
+				</li>
+				<li>
+					<P class="sy_p1">
+						<img onclick="javascript:window.location.href = 'stock'" src="/static/index/img/img03.png"/>
+					</P>
+					<p class="sy_p2" onclick="javascript:window.location.href = 'stock'">
+						库存盘点
+					</p>
+				</li>
+				<li>
+					<P class="sy_p1">
+						<img onclick="javascript:window.location.href = 'kucunliebiao'" src="/static/index/img/img03.png"/>
+					</P>
+					<p class="sy_p2" onclick="javascript:window.location.href = 'kucunliebiao'">
+						库存列表
+					</p>
+				</li>
+				<li>
+					<P class="sy_p1">
+						<img onclick="javascript:window.location.href ='purchase'" src="/static/index/img/img03.png"/>
+					</P>
+					<p class="sy_p2" onclick="javascript:window.location.href ='purchase'">
+						仓库进货
+					</p>
+				</li>
+				<li>
+					<P class="sy_p1">
+						<img onclick="javascript:window.location.href ='purchases'" src="/static/index/img/img03.png"/>
+					</P>
+					<p class="sy_p2" onclick="javascript:window.location.href ='purchases'">
+						仓库列表
+					</p>
+				</li>
+			</ul>
+		</div>
+		{/if}
+
+	</body>
+</html>

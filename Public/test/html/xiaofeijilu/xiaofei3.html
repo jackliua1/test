@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/xg.css"/>
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body style="background-color: #eef4f0;">
+		<ul class="xf_ul1">
+			<li style="border-bottom: none;">
+				<div class="xf_div1">
+					<p class="xf_p1">
+						<img src="../../img/xf01.jpg"/>
+					</p>
+					<div class="xf_div2">
+						<p class="xf_p2">电站拆卸200瓦太阳能电池板 太阳能板 太阳能</p>
+						<p class="xf_p3"><span>500</span>W</p>						
+					</div>
+					
+				</div>								
+			</li>									
+		</ul>
+		
+		
+		<div class="xf_div6">
+			<div class="xf_div7">
+				<p class="xf_p8">评分</p>
+				<div class="xf_div8">
+					<div id="starRating1">
+					    <p class="photo">
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					        <span><i class="high"></i><i class="nohigh"></i></span>
+					    </p>
+					    <p class="starNum">0.0分</p>				   
+					</div>
+				</div>
+			</div>
+			
+			<div class="xf_div9">
+				<textarea name="" rows="" cols=""></textarea>
+			</div>						
+		</div>
+		
+		<div class="xf_div10">
+			<input type="button" id="" value="提交评论" />
+		</div>
+	</body>
+	<script>
+    $(function () {
+        //评分
+        var starRating = 0;
+        $('.photo span').on('mouseenter',function () {
+            var index = $(this).index()+1;
+            $(this).prevAll().find('.high').css('z-index',1)
+            $(this).find('.high').css('z-index',1)
+            $(this).nextAll().find('.high').css('z-index',0)
+            $('.starNum').html((index*1).toFixed(1)+'分')
+        })
+        $('.photo').on('mouseleave',function () {
+            $(this).find('.high').css('z-index',0)
+            var count = starRating / 2
+            if(count == 5) {
+                $('.photo span').find('.high').css('z-index',1);
+            } else {
+                $('.photo span').eq(count).prevAll().find('.high').css('z-index',1);
+            }
+            $('.starNum').html(starRating.toFixed(1)+'分')
+        })
+        $('.photo span').on('click',function () {
+            var index = $(this).index()+1;
+            $(this).prevAll().find('.high').css('z-index',1)
+            $(this).find('.high').css('z-index',1)
+            starRating = index*1;
+            $('.starNum').html(starRating.toFixed(1)+'分');
+           
+        })
+    })
+
+</script>
+
+</html>

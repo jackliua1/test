@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/xg.css"/>
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body style="background-color: #eef4f0;">
+		
+		<div class="mnq_div1">
+			<div class="mnq_div2">
+				<p class="mnq_p1">推薦會員人數</p>
+				<div class="mnq_div3">
+					<div class="mnq_div4">
+						<input type="text" id="" value="1" class="mnq_input1"/>
+						
+						<p class="mnq_p2">
+							<img src="../../img/mnq01.png"/>
+						</p>
+					</div>					
+					<ul class="mnq_ul1">
+						<li>1</li>
+						<li>25</li>
+						<li>30</li>
+						<li>35</li>
+						<li>40</li>
+						<li>50</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="mnq_div5">
+				<p class="mnq_p1">活躍會員百分比</p>
+				<div class="mnq_div3">
+					<div class="mnq_div4">
+						<input type="text" id="" value="10%" class="mnq_input1"/>
+						
+						<p class="mnq_p2">
+							<img src="../../img/mnq01.png"/>
+						</p>
+					</div>					
+					<ul class="mnq_ul1">
+						<li>10%</li>
+						<li>20%</li>
+						<li>30%</li>
+						<li>40%</li>
+						<li>50%</li>
+						<li>60%</li>
+						<li>70%</li>
+						<li>80%</li>
+						<li>90%</li>
+						<li>100%</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+			<div class="mnq_div2">
+				<p class="mnq_p1">時間（月）</p>
+				<div class="mnq_div3">
+					<div class="mnq_div4">
+						<input type="text" id="" value="3月" class="mnq_input1"/>
+						
+						<p class="mnq_p2">
+							<img src="../../img/mnq01.png"/>
+						</p>
+					</div>					
+					<ul class="mnq_ul1">
+						<li>1月</li>
+						<li>2月</li>
+						<li>3月</li>
+						<li>4月</li>
+						<li>5月</li>
+						<li>6月</li>
+						<li>7月</li>
+						<li>8月</li>
+						<li>9月</li>
+						<li>10月</li>
+						<li>11月</li>
+						<li>12月</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		<div class="xf_div10">
+			<input type="button" id="" value="完成" />
+		</div>
+		
+		
+		
+		
+		<ul class="wt_ul1">
+			<li class="wt_li1_a">				
+				<p class="wt_p1">
+					<img src="../../img/wt01.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>主要</span>
+				</p>				
+			</li>
+			
+			<li class="wt_li1_b">				
+				<p class="wt_p1">
+					<img src="../../img/wt02.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>我的</span>
+				</p>				
+			</li>
+			
+			<li class="wt_li1_c">				
+				<p class="wt_p1">
+					<img src="../../img/wt03.png"/>
+				</p>
+				<p class="wt_p2 wt_cor1">
+					<span>帮助</span>
+				</p>
+				
+				
+				<div>
+					<ul class="wt_ul2">
+						<li>
+							常见问题
+						</li>
+						<li>
+							联系我们
+						</li>
+						<li class="wt_li2">
+							复制模拟
+						</li>
+					</ul>
+					<img src="../../img/wt04.png" class="wt_img1"/>
+				</div>
+				
+			</li>
+		</ul>
+	</body>
+	
+	<script type="text/javascript">
+		$(".mnq_p2").on("click",function(){
+			$(".mnq_ul1").hide();
+			$(this).parents(".mnq_div3").find(".mnq_ul1").slideDown();
+		})
+		
+		$(".mnq_ul1 li").on("click",function(){
+			$(this).parents("ul").hide();
+			var t = $(this).text();
+			$(this).parents(".mnq_div3").find(".mnq_input1").val(t);			
+		})
+		
+		
+	</script>
+</html>

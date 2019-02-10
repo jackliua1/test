@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/static/index/css/jiajiakang.css"/>
+		<script src="/static/index/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="gh_div1">
+			<ul class="gh_ul1">
+				<p class="gh_li_a" onclick="javascript:window.location.href = 'index'">
+					<img src="/static/index/img/img04.png"/>
+					<!--<i class="icon-reply icon-only"></i>-->
+				</p>
+				<li class="gh_li_b">
+					<span>库存列表</span>
+				</li>
+				<form action="{:url('index/kucunliebiao')}" method="post" name="myform">
+					<li class="gh_li_c">
+						<input type="submit" id="" value="刷新" class="ghd_input2" />
+					</li>
+				</form>
+			</ul>
+		</div>
+		
+		<p class="gh_p4"></p>
+		<!--<form action="{:url('index/dis')}" method="post" name="myform">-->
+		<!--<div class="ghd_div1">-->
+			<!--<div class="ghd_div2">-->
+				<!--<img src="/static/index/img/img10.png" class="ghd_img1"/>-->
+				<!--<input type="text" id="" value="" name="username" class="ghd_input1" placeholder="输入商品名称进行查找"/>-->
+			<!--</div>			-->
+			<!--<input type="submit" id="" value="搜索" class="ghd_input2" />-->
+		<!--</div>-->
+		<!--</form>-->
+		<!--<form action="{:url('index/stockTime')}" method="post" name="myform">-->
+			<div class="ghd_div3">
+				<img src="/static/index/img/img11.png" class="ghd_img2"/>
+
+				<span><?php echo date("Y-m-d")?></span>
+
+		
+				<!--<input type="text"  name="time"  placeholder="日期进行查找如2018-8-15"/>-->
+				<!--&lt;!&ndash;<span><?php echo date("Y-m-d")?></span>&ndash;&gt;-->
+				<!--<input type="submit" id="" value="搜索"  />-->
+			</div>
+		<!--</form>-->
+       
+        	
+  
+          <div style="height: 65%">
+          	<div style="width: 32.5%;float: left;margin-left: 20px;">
+			<p>昨日库存量</p >
+			<ul >
+				{foreach name="infn" id="vo"}
+			<li style="padding-left: 10px !important;">
+				
+				<div id="mydiv" style="float: left;margin-left: 20px;width: 100%; line-height: 25px;">
+					<p >{$vo.k_nume}</p >
+				<p style="margin-top: 2px;">
+						库存重量：
+                 <span  style="margin-right:20px">{$vo.numberss}</span>
+					<!-- 采购重量：
+					<span></span>
+					  <span  style="margin-right:20px"></span>
+					价格：<span ></span>元
+					 <span  style="margin-right:20px"></span> -->
+				
+				</p >
+				</div>
+			</li>
+				{/foreach}
+		</ul>	
+	</div>
+<div style="width: 32%;float: left;margin-top: 0px;margin-left: 20px;">
+			<p>今日库存量</p >
+			<!-- //<ul style="margin-top: 20px;width: 100%;id="myul""> -->
+				<ul >
+
+				{foreach name="dse" id="vo"}
+			<li style="padding-left: 10px !important;">	
+		
+			
+				<div id="mydiv" style="float: left;margin-left: 20px;width: 100%; line-height: 25px;">
+					<p >{$vo.k_nume}</p >
+				<p style="margin-top: 2px;">
+					库存重量：
+                 <span  style="margin-right:20px">{$vo.numberss}</span>
+					
+				</p >
+				</div>
+			</li>
+			<li>&nbsp</li>
+		{/foreach}
+		</ul>	
+	</div>
+	<div style="width: 32%;float: left;margin-top: 0px;margin-left: 20px; line-height: 25px;" >
+			<p>今日采购量</p >
+			 <ul >
+					{foreach name="infrs" id="vo"}
+			<li style="padding-left: 10px !important;">
+				
+				<div id="mydiv" style="float: left;margin-left: 20px;width: 100%;">
+					<p >{$vo.username}</p >
+				<p style="margin-top: 2px;">
+					采购数量：{$vo.number}
+                 <span  style="margin-right:20px"></span>
+
+					
+				</p >
+				</div>
+			</li>
+			{/foreach}
+		</ul>	 
+	</div>
+          </div>
+		
+
+        
+		
+   <div style="width: 100%">
+   		<form action="{:url('index/from')}" method="post" style="float: right;width: 30%">
+
+		<div id="" style="margin-top: 5px;margin-left: 20px;width: 260px">
+		<span id="">
+	            当日营业额： <input type="" name="num_s" id="" value="{$dates.num_s}"  style="float: right;" />
+		</span>
+	</div>
+	<div id="" style="margin-top: 10px;margin-left: 20px;width: 260px ">
+		<span id="">
+	            累计营业额： <input type="" name="num_a" id="" value="{$dates.num_a}"  style="float: right;" />
+		</span>
+	</div>
+	<div id="" style="margin-top: 10px;margin-left: 20px;width: 260px">
+		<span id="">
+	            提&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp现： <input type="" name="num_d" id="" value="{$dates.num_d}"  style="float: right;" />
+		</span>
+	</div>
+	<!-- <div id="" style="margin-top: 10px;margin-left: 20px;width: 260px">
+		<span id="">
+	            报损&nbsp&nbsp&nbsp&nbsp原因： <input type="text" name="num_f" id="" value="{$dates.num_f}"  style="float: right;" />
+		</span>
+	</div> -->
+	<div id="" style="margin-top: 5px;margin-left: 20px;width: 260px">
+		<span id="" style="width: 84px;height: 16px;">
+	            报损&nbsp&nbsp&nbsp&nbsp原因： <input type="" name="num_x" id="" value="{$dates.num_x}"  style="float: right;" />
+		</span>
+	</div>
+		<div id="" style="margin-top: 10px;margin-left: 20px;width: 260px">
+		<span id="">
+	            备&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp注： <input type="" name="num_z" id="" value="{$dates.num_z}"  style="float: right;" />
+		</span>
+	</div>
+		
+		<div id="" style="margin-top: 10px;margin-left: 20px;width: 260px">
+			<button class="btn btn-primary radius" type="submit"  id="bt" style="float: right;border-radius: 5px;outline: none;cursor: pointer;"> 提交</button>
+			</div>
+	
+
+		</form>
+  
+   </div>
+   
+    	
+		
+   
+	
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/xg.css"/>
+		<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body style="background-color: #eef4f0;">
+		<div class="tq_div1">
+			<p class="tq_p1">
+				<img src="../../img/ewm01.png"/>
+			</p>
+			<p class="tq_p2">AM</p>
+			<p class="tq_p3">100积分</p>
+		</div>
+		
+		<div class="tq_div2">
+			<div class="tq_div3">
+				<input type="text" id="" value="" class="tq_input1"/>
+				<p class="tq_p5">
+					<span>积分</span>
+				</p>
+			</div>
+			<p class="tq_p4">兑换</p>
+			<div class="tq_div3">
+				<input type="text" id="" value="" class="tq_input1"/>
+				<p class="tq_p5">
+					<span>美元</span>
+				</p>
+			</div>
+		</div>
+		
+		
+		<div class="tq_div4">
+			<input type="button" id="wancheng" value="完成" />
+		</div>
+		
+		
+		
+		<div class="zy1_div9">
+			<div class="tq_div5">
+				<p class="zy1_p4">確定兑换50BV成45美元？</p>
+				
+				<p class="zy1_p5">注意: <span>確定後不能更改</span>。</p>
+				
+				<p class="zy1_p6">
+					<input type="button" id="queding" value="明白及確定" />
+				</p>
+				<p class="zy1_p6">
+					<input type="button" id="quxiao" value="取消" />
+				</p>
+			</div>
+			
+			<div class="tq_div6">			
+				<p class="zy1_p4">
+					<span>成功兑换45美元</span>
+				</p>
+				
+				<p class="zy1_p4">
+					<span>時間: 2018-06-02 11:49:38</span><br />
+					<span>參考編號: 003190 </span><br />
+				</p>
+				
+				<p class="zy1_p6" style="padding-top: 20px;">
+					<input type="button" id="sure" value="OK" />
+				</p>
+								
+			</div>			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<ul class="jf_ul1">
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/mx01.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>购买</span>
+				</p>				
+			</li>
+			
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/gm02.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>明细</span>
+				</p>				
+			</li>
+			
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/gm03.png"/>
+				</p>
+				<p class="wt_p2">
+					<span>转移</span>
+				</p>				
+			</li>
+			<li>				
+				<p class="wt_p1">
+					<img src="../../img/tq02.png"/>
+				</p>
+				<p class="wt_p2 wt_cor1">
+					<span>提取</span>
+				</p>				
+			</li>			
+		</ul>
+	</body>
+	<script type="text/javascript">			
+		$("#wancheng").on("click",function(){
+			$(".zy1_div9").fadeIn();
+		})
+				
+		$("#quxiao").on("click",function(){
+			$(this).parents(".zy1_div9").hide();
+		})
+		
+		$("#queding").on("click",function(){
+			$(this).parents(".tq_div5").hide();
+			$(".tq_div6").show();
+		})
+		
+		$("#sure").on("click",function(){
+			$(this).parents(".tq_div6").hide();
+			$(".tq_div5").show();
+			$(this).parents(".zy1_div9").hide();
+		})
+	</script>
+</html>

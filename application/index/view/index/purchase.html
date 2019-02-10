@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<link rel="stylesheet" type="text/css" href="/static/index/css/jiajiakang.css"/>
+	<script src="/static/index/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		.hideli{display:none;}
+	</style>
+</head>
+<body>
+<div class="gh_div1">
+	<ul class="gh_ul1">
+		<p class="gh_li_a" onclick="javascript:window.location.href = 'index'">
+			<img src="/static/index/img/img04.png"/>
+		</p>
+		<li class="gh_li_b">
+			<span>仓库进货</span>
+		</li>
+	</ul>
+</div>
+
+<p class="gh_p4"></p>
+
+<div class="gh_div2">
+	<p class="gh_p1">分类</p>
+	<ul class="gh_ul2">
+		<li class="gh_li2">
+			<p class="gh_p2"></p>
+			<div class="gh_div3">
+				<span>全部</span>
+			</div>
+		</li>
+		{foreach name="dates" id="vo"}
+		<li class="gh_li2">
+			<p class="gh_p2"></p>
+			<div class="gh_div3">
+				<span>{$vo.ys}</span>
+			</div>
+			<p class="gh_p3"></p>
+		</li>
+		{/foreach}
+	</ul>
+</div>
+<!--{foreach name="info" id="vo"}-->
+<form action="{:url('index/adds')}" method="post" name="myform" id="te">
+
+	<div class="gh_div4">
+
+		<ul class="gh_ul3">
+			{foreach name="data" id="vo"}
+			<li data-value="{$vo.ys}">
+				<p class="gh_p5">
+					<img src="__PUBLIC__{$vo.file}"/>
+				</p>
+				<p class="gh_p6">
+					<input type="hidden" id="username" name="username" value="{$vo.username}" />{$vo.username}
+				</p>
+				<div class="gh_div5">
+					<p class="gh_p7">
+						<span>单位：</span><span>{$vo.zhong}</span>
+
+						<!--<span>价格：</span><span>{$vo.jiage}</span>元-->
+					</p>
+
+					<div class="gh_div6">
+						<p class="gh_p8">
+							<img src="/static/index/img/img07.png"/>
+						</p>
+
+						<p class="gh_p9">
+							<input type="text" id="number" value="0" name="number" /><div id='res'></div>
+						<input type="hidden" id="uid" name="uid" value="{$vo.id}" />
+						</p>
+
+						<p class="gh_p10">
+							<img src="/static/index/img/img08.png"/>
+						</p>
+					</div>
+
+				</div>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+
+
+	<div class="gh_div7">
+		<div class="gh_div8">
+			<img src="/static/index/img/img09.png" class="gh_img1"/>
+			<p>
+				<span>已选数量：</span>
+				<span class="zongshu">0</span>
+
+				<span></span>
+			</p>
+		</div>
+
+
+		<p class="gh_p11">
+			<input type="button" id="bt" value="提交" />
+		</p>
+	</div>
+</form>
+</body>
+
+<script type="text/javascript">
+
+    //切换分类商品
+    $(".gh_ul2 li").on("click",function(){
+        $(this).addClass("gh_li2").siblings().removeClass("gh_li2");
+        //获取当前分类id
+        var attr_name = $(this).find(".gh_div3 span").text();
+        if(attr_name=='全部'){
+            //全部显示
+            $(".gh_ul3>li").removeClass("hideli");
+        }else{
+            //按分类显示
+            $(".gh_ul3>li").each(function(i){
+                if($(this).attr('data-value')!=attr_name){
+                    $(this).addClass("hideli");
+                }else{
+                    $(this).removeClass("hideli");
+                }
+            })
+        }
+        return false;
+        //触发ajax切换商品操作
+        $.ajax({
+            url:"qhattr",
+            data:{attr_name:attr_name},
+            type:'POST',
+            dataType:'json',
+            success:function(res){
+                //接收后台返回的数据
+                if(res.status==0){
+                    alert(res.msg);
+                }
+                //对商品进行循环
+                var str = "";
+                $.each(res.data,function(index,val){
+                    str += '<li><p class="gh_p5"><img src="/'+val.file+'"/>';
+                    str += '</p><p class="gh_p6">'+val.username+'</p><div class="gh_div5"><p class="gh_p7">';
+                    str += '<span>单位：</span><span>KG</span></p><div class="gh_div6"><p class="gh_p8">';
+                    str += '<img src="/static/index/img/img07.png"/></p><p class="gh_p9">';
+                    str += '<input type="text" id="number" value="0" name="number" /><div id="res"></div>';
+                    str += '<input type="hidden" id="uid" name="uid" value="'+val.id+'" />';
+                    str += ' </p><p class="gh_p10"><img src="/static/index/img/img08.png"/></p></div></div></li>';
+                });
+                $(".gh_ul3").html(str);
+
+            }
+        })
+    })
+</script>
+
+<script type="text/javascript">
+    $(".gh_p8").on("click",function(){
+        var t = $(this).parents(".gh_div6").find(".gh_p9 input").val();
+        t = t - 1;
+        if(t <0){
+            return false;
+        }else{
+            $(this).parents(".gh_div6").find(".gh_p9 input").val(t);
+        }
+        tj();
+    })
+
+    $(".gh_p10").on("click",function(){
+        var t = $(this).parents(".gh_div6").find(".gh_p9 input").val();
+        t = parseInt(t);
+        t = t + 1;
+        $(this).parents(".gh_div6").find(".gh_p9 input").val(t);
+        tj();
+    })
+</script>
+
+<script type="text/javascript">
+    function tj(){
+        var num = 0;
+        $(".gh_ul3 li").each(function(){
+            var tt = $(this).find(".gh_p9 input").val();
+            tt = parseInt(tt);
+            num = num + tt;
+        })
+
+        $(".zongshu").text(num);
+//            $(".gh_p3").text(num);
+    }
+</script>
+<script type="text/javascript">
+    btObj = document.getElementById('bt');
+    btObj.onclick = function(){
+        var arr =  $('#te').serializeArray();
+        console.log(arr);
+        $.ajax({
+            url:"/index/index/addre",
+            data:{arr:arr},
+            type:'POST',
+            dataType:'json',
+            success:function(arr){
+                if(arr!== 0){
+                    alert('提交成功');
+                    window.location.href = 'index';
+                }else{
+                    alert('提交失败');
+
+                }
+
+
+            }
+        })
+    }
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/lib/respond.min.js"></script>
+<![endif]-->
+<!-- <link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="sty -->
+<!--[if IE 6]>
+<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+
+<![endif]-->
+<title></title>
+<style type="text/css">
+   td {
+    text-align: center;
+     }
+</style>
+</head>
+
+<body>
+<!-- <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 打印管理 <span class="c-gray en">&gt;</span> 送货单 
+
+</nav> -->
+<div id="page-container" style="overflow: hidden;">
+   
+
+     <h1 style="text-align:center; font-family:YouYuan;color:#74708E;margin-top:1px">无锡市海尔思食品贸易有限公司</h1>
+    <p style="text-align:center;margin-right: 0px;font-family:YouYuan;color:#74708E;margin-top:-20px">(中粮家佳康肉食无锡地区唯一经销商) 投诉电话:18661235888</p>
+    <h3 style="text-align:center;font-family:YouYuan;color:#74708E;margin-top:-17px">送&nbsp&nbsp&nbsp货&nbsp&nbsp&nbsp单</h3>
+    <div style="width: 95%;float: left;height: 100%">
+    <form class="well form-inline margin-top-20" method="post" action="index" style="text-align:center">
+        <div>
+            客户名称:
+            <select class="form-control" name="realname" style="width: 140px;" >
+
+               
+           
+                    <option name="{$datas[0]['realname']}" value='='>{$datas[0]['realname']}</option>
+                         {foreach name="data" id="vo"}
+                        <option name="{$vo.realname}" value='{$vo.id}'>{$vo.realname}</option>
+                        {/foreach}
+                
+                       
+                      
+                       
+                      
+                   
+          
+
+            </select> &nbsp;&nbsp;
+        客户电话:
+        <select class="form-control" name="mobile" style="width: 140px;" >
+
+            {foreach name="data" id="vo"}
+            <option  name="{$vo.mobile}" value='{$vo.id}'>{$vo.mobile}</option>
+            {/foreach}
+
+        </select> &nbsp;&nbsp; 
+        <span style="margin-left: 10px;"> NO.<span>{$sum.times}</span></span>
+        </div>
+           
+        <!--<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> </button>-->
+        
+     
+ 
+         
+       <div >
+               <span style="margin-right: -505px">时间:<input type="date" id="datePicker" name="time"  value="{$sum.time}" class="form-control" style="margin-bottom: 5px;margin-height: 16px!important;margin-left: 10px" /></span> 
+            
+           
+</div>    
+
+            <div style="float: right;margin-right: 10%;">
+            <button type="submit" class="btn btn-success" id="hr1" name="">搜索</button>
+            <input type="button"  class="btn btn-success" value="打印"id="print"/>
+            </div>
+             </form>
+              
+            <div id="mydiv" style="margin: auto; width: 100%;">
+                <table border="1" style="width: 100%; margin: auto;">
+                    <tr>
+                        <td style="text-align: center;">序号</td>
+                        <td  style="text-align: center;">商品名称</td>
+                        <td style="text-align: center;">重量</td>
+                        <td style="text-align: center;">单位</td>
+                        
+                        <td style="text-align: center;">单价</td>
+                        <td style="text-align: center;">金额</td>
+                        <td style="text-align: center;">备注</td>
+                    </tr>
+                    {foreach name="datas" id="vo"}
+                        <tr >
+                        <td  style="border: 1px solid">{$vo.zongjias}</td>
+                        <td style="border: 1px solid ;font-weight:bold">{$vo.username}</td>
+                        <td   style="border: 1px solid">{$vo.num}</td>
+                        <td  style="border: 1px solid">kg</td>
+                        <!-- <td width="10"  style="border: 1px solid"><font style="margin-left: 10px; ">{$vo.number}</font></td> -->
+                         
+                        <td   style="border: 1px solid">{$vo.prices}</td>
+                        <td   style="border: 1px solid">{$vo.zongjia}</td>
+                         <td  style="border: 1px solid;width: 100px">
+                            <input type="text" name="" value="" style="width: 100%;height: 100%;border:none;outline: none; " >
+                        </td>
+                        </tr>
+                    {/foreach}
+                    <tr>
+                          
+                      <td>  合计：</td>
+                       <td><span style="margin-right: 2px;"> {$sum.numbers}</span></td>
+                        <td> kg： </td>
+                         <td><span style="margin-right: 2px;">{$sum.num}</span></td>
+                          <td>金额合计：</td>
+                          <td><span style="margin-right: 2px;">{$sum.zongjia}(元)</span></td>
+                          <td> </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="mydiv1" style="width: 100%;margin-top: 15px;">
+               
+                <span id="" style="margin-left: 15px;float: left;">
+            制单人：<input type="text" name="" value=""  id="myipt" >
+        </span>
+        
+        
+                <span id="" style="margin-right: 15px;float: right;">
+            收货单位及经手人：<input type="text" name="" value=""  id="myipt" >
+        </span>
+      
+            </div>
+
+
+
+      </div>
+         <div style="width: 5%;float: left;height: 100%;margin-top:50px">
+            <div style="width: 20%;font-size: 15px;margin-left:10px" >
+<div style="margin-top:5px">①白存根</div>  
+           <div style="margin-top:5px">②红回执</div>
+           <div style="margin-top:5px">③黄客户</div>
+            </div>
+          
+
+        
+         </div>
+        </div>
+
+
+
+
+
+  
+   <!--  <div id="cl">
+        <table style=" margin-bottom:0px;text-align: center;"  >
+             <thead>
+        <tr >
+              <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;">序号</font></td>
+        <td width="100"  style="border: 1px solid"><font style="margin-left: 10px;">商品名称</font></td>
+        <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;">单位</font></td>
+    <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;">数量</font></td> -->
+          <!-- <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;">总量</font></td> -->
+       <!--  <td width="10"  style="border: 1px solid"><font style="margin-left: 10px; ">单价(元)</font></td>
+        <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;">金额(元)</font></td>
+        </tr>
+        {foreach name="data" id="vo"}
+        <tr >
+            <td width="50"  style="border: 1px solid"><font style="margin-left: 10px;  font-weight:bold" >{$vo.zongjias}</font></td>
+        <td width="50"  style="border: 1px solid"><font style="margin-left: 10px;  font-weight:bold" >{$vo.usernames}</font></td>
+        <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;  ">公斤</font></td>
+        <td width="10"  style="border: 1px solid"><font style="margin-left: 10px; ">{$vo.number}</font></td>
+         <td width="10"  style="border: 1px solid"><font style="margin-left: 10px; ">{$vo.num}</font></td>
+        <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;  ">{$vo.prices}</font></td>
+        <td width="10"  style="border: 1px solid"><font style="margin-left: 10px;  ">{$vo.zongjia}</font></td>
+        </tr>
+        {/foreach}
+        </thead>
+        </table>
+        <table style=" margin-bottom:0px;"  >
+            <tr>
+                <th width="100"  style="border: 1px solid">
+                    <font style="margin-left: 10px; ">大写:{$sum.numbers}</font>
+                    <font style="margin-left: 150px;">数量合计:{$sum.number}(kg)</font>
+                    <font style="margin-left: 120px;">金额合计:{$sum.zongjia}(元)</font>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id="c2">
+
+    </div>
+    <div id="c3">
+        <div style="float:left;border:1px ;  width:40%; margin-left: 20px">制作人:	</div>
+        <div style="float:left;border:1px;   width:40%;margin-left: 100px ">签收人:</div> -->
+        <!--<h5 style="width: 95%;text-align:center; font-family:YouYuan;color:#74708E">制作人:</h5><h5 style=" font-family:YouYuan;color:#74708E">签收人:</h5>-->
+    <!-- </div> -->
+</div> 
+</body>
+</html>
+<!--_footer 作为公共模版分离出去-->
+<!-- <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> 
+
+
+ <script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script> -->
+<!-- <script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> -->
+<!-- <script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script> -->
+<script language="javascript" src="/lib/jquery-1.4.4.min.js"></script>
+<script language="javascript" src="/lib/jquery.jqprint-0.3.js"></script>
+<script type="text/javascript">
+   
+
+    $("#print").click(function(){
+
+          
+        $('#hr1').hide();
+        $('#print').hide();
+        $("#mydiv input").css("border","none");
+          $("#mydiv1 input").css("border","none")
+            window.print();
+
+        // $("#page-container").jqprint(
+        //     {
+        //         debug:false,
+        //         importCSS: true,
+        //         printContainer:true,
+        //         operaSupport:true
+        //     });
+
+    });
+
+
+
+
+
+
+
+   // 创建一个当前日期对象
+    var now = new Date();
+    //格式化日，如果小于9，前面补0
+    var day = ("0" + now.getDate()).slice(-2);
+    //格式化月，如果小于9，前面补0
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    //拼装完整日期格式
+    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+    //完成赋值
+    $('#datePicker').val(today);
+
+    $("#level").click(function(){
+
+        $.ajax({
+            type:"POST",
+            url:"index",
+            dataType: "json",
+            data:{
+                level:$('#level').val()
+            },
+
+            success:function(data) {
+alert(   );
+
+
+                // if(data!=null) {
+                for (var i=0;i<=data;i++){
+alert(1);
+
+                    var str = '<div class="cl pd-5 bg-1 bk-gray mt-20">客户电话:<input name="mobile" type="text" value="' + data[i]["mobile"] + '">客户地址:<input name="realname" type="text" value="' + data[i]["realname"] + '" width="400" height="100"></div>';
+                    $("#aaa").append(str);
+                        $.each(data,function(k,val){
+                            var    sty = ' <table class="table table-border table-bordered table-bg   table-responsive"><tbody> ' +
+                            '<tr >' +
+                            ' <td  width="25">'+ data["mobile"] +'</td>' +
+                            ' <td  width="80"></td>' +
+                            ' <td width="100"></td>' +
+                            ' <td width="90"></td>' +
+                            ' <td  width="150"></td>' +
+                            ' <td width="100"></td>' +
+                            ' <td width="100"></td>' +
+                            ' </tr> ' +
+
+                            '</tbody> </table> ';
+                            $("#bbb").append(sty);
+                        });
+
+                }
+
+                // }else{
+                    // var str = '<div class="cl pd-5 bg-1 bk-gray mt-20">客户电话:<input name="mobile" type="text" value="' + data["mobile"] + '">客户地址:<input name="realname" type="text" value="' + data["realname"] + '" width="400" height="100"></div>';
+                    // $("#aaa").append(str);
+                    // alert(str);
+                    // var sty = '<table class="table table-border table-bordered table-bg   table-responsive"> <thead> <tr > <th width="25">序号</th> <th width="80">商品名称</th> <th width="100">单位</th> <th width="90">数量</th> <th width="150">单位</th> <th width="100">金额</th> <th width="100">备注</th> </tr> </thead> <tbody> <tr class="text-c"> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr> </tbody> </table>';
+                    // $("#bbb").append(sty);
+                }
+
+                // }
+        });
+        return false;
+    });
+
+
+</script>
+<style type="text/css">
+          table,th {border: 1px solid}
+    table{
+        border-collapse: collapse;
+        text-align: center;
+        margin: 20px auto;
+        width: 500px;
+    }
+        </style>
+</body>
+</html>

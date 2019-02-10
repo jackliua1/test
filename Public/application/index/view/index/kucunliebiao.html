@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/static/index/css/jiajiakang.css"/>
+		<script src="/static/index/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="gh_div1">
+			<ul class="gh_ul1">
+				<p class="gh_li_a" onclick="javascript:window.location.href = 'index'">
+					<img src="/static/index/img/img04.png"/>
+					<!--<i class="icon-reply icon-only"></i>-->
+				</p>
+				<li class="gh_li_b">
+					<span>库存列表</span>
+				</li>
+				<form action="{:url('index/kucunliebiao')}" method="post" name="myform">
+					<li class="gh_li_c">
+						<input type="submit" id="" value="刷新" class="ghd_input2" />
+					</li>
+				</form>
+			</ul>
+		</div>
+		
+		<p class="gh_p4"></p>
+		<form action="{:url('index/dis')}" method="post" name="myform">
+		<div class="ghd_div1">
+			<div class="ghd_div2">
+				<img src="/static/index/img/img10.png" class="ghd_img1"/>
+				<input type="text" id="" value="" name="username" class="ghd_input1" placeholder="输入商品名称进行查找"/>
+			</div>			
+			<input type="submit" id="" value="搜索" class="ghd_input2" />
+		</div>
+		</form>
+		<form action="{:url('index/stockTime')}" method="post" name="myform">
+			<div class="ghd_div3">
+				<img src="/static/index/img/img11.png" class="ghd_img2"/>
+
+				<span><?php echo date("Y-m-d")?></span>
+
+				<input type="text"  name="time"  placeholder="日期进行查找如2018-8-15"/>
+				<!--<span><?php echo date("Y-m-d")?></span>-->
+				<input type="submit" id="" value="搜索"  />
+			</div>
+		</form>
+
+		<ul class="ghd_ul1">
+			{foreach name="infr" id="vo"}
+			<li>
+				<p class="ghd_p2">
+					<img src="__PUBLIC__{$vo.file}"/>
+				</p>
+				
+				<p class="ghd_p3">{$vo.username}</p>
+				<p class="ghd_p4">
+					采购数量：<span>{$vo.number}KG</span>
+					采购时间：<span>{$vo.time}</span>
+				</p>
+			</li>
+			{/foreach}
+
+		</ul>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

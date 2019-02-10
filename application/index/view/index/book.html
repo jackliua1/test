@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="/static/index/css/jiajiakang.css"/>
+		<script src="/static/index/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/zzsc.css">-->
+		<!--<link rel="stylesheet" href="../css/dcalendar.picker.css"/>-->
+		
+
+	</head>
+	<body>
+		<div class="gh_div1">
+			<ul class="gh_ul1">
+				<p class="gh_li_a" onclick="javascript:window.location.href = 'index'">
+					<img src="/static/index/img/img04.png"/>
+					<!--<i class="icon-reply icon-only"></i>-->
+				</p>
+				<li class="gh_li_b">
+					<span>报货单</span>
+				</li>
+				<form action="{:url('index/book')}" method="post" name="myform">
+				<li class="gh_li_c">
+					<input type="submit" id="" value="刷新" class="ghd_input2" />
+				</li>
+				</form>
+			</ul>
+		</div>
+		
+		<p class="gh_p4"></p>
+
+
+
+			<div class="ghd_div3">
+				<img src="/static/index/img/img11.png" class="ghd_img2"/>
+
+				<span><?php echo date("Y-m-d")?></span>
+
+
+			</div>
+
+		<!--<p class="ghd_p1">更换日期</p>-->
+		<ul class="ghd_ul1">
+
+			{foreach name="de" id="vo"}
+			<li>
+				<p class="ghd_p2">
+					<img src="__PUBLIC__{$vo.file}"/>
+				</p>
+				<p class="ghd_p3">{$vo.username}</p>
+				<p class="ghd_p4">
+					<input type="hidden" id="uids" name="uid" value={$vo.jiage} />
+
+					采购数量：<input name=username id="numbers" type=text value="{$vo.number}" maxlength=20 style="border:0;background:transparent;  width: 10px" >
+					{if condition="($vo.zhong ==块 )  "} 块
+					{elseif condition="($vo.zhong == 片)"/}件
+						{elseif condition="($vo.zhong == 公斤)"/}件
+								{elseif condition="($vo.zhong == 副)"/}付
+					{else /} 个
+					{/if}
+           <span  style="margin-right:20px"></span>
+
+				
+					采购重量：<span>{$vo.ge}		{if condition="($vo.zhong ==块 )  "}块
+					{elseif condition="($vo.zhong == 片)"/}片
+						{elseif condition="($vo.zhong == 公斤)"/}公斤
+								{elseif condition="($vo.zhong == 副)"/}付
+					{else /} 个
+					{/if}</span>
+					  <span  style="margin-right:20px"></span>
+					价格：<span >{$vo.jiage}</span>元
+					 <span  style="margin-right:20px"></span>
+					采购时间：<span style="margin-right:20px">{$vo.time}</span>
+				</p>
+			</li>
+			{/foreach}
+		</ul>
+		
+		
+		
+		<div class="ghd_div4">
+			<div class="gh_div1">
+				<ul class="gh_ul1">
+					<li class="gh_li_a">
+						<img src="/static/index/img/img04.png"/>
+					</li>
+					<li class="gh_li_b">
+						<span>选择日期</span>
+					</li>					
+				</ul>
+			</div>
+			
+			<p class="gh_p4"></p>
+			
+			
+
+			
+		</div>
+		
+		
+		
+		
+	</body>
+	<!--<script type="text/javascript" src="../js/dcalendar.picker.js"></script>-->
+	<!--<script type="text/javascript">-->
+		<!--$('#mycalendar').dcalendar();-->
+	<!--</script>-->
+
+</html>
